@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An alignment in both axes.
 public enum NSideMenuSide: String{
     case leading = "leading"
     case trailing = "trailing"
@@ -24,6 +25,7 @@ public enum NSideMenuSide: String{
     }
 }
 
+/// The current side menu presentation style.
 public enum NSideMenuStyle{
     case normal
     case scale
@@ -32,11 +34,12 @@ public enum NSideMenuStyle{
     case rotate
 }
 
-
+/// NSideMenuView required configurations and options.
 public class NSideMenuOptions: ObservableObject{
     var animatableShow: Double = 0
     @Published var menuZIndex: Double = 0
 
+    /// Menu view visiblity.
     @Published public var show: Bool = false{
         willSet{
             if(newValue){
@@ -53,10 +56,13 @@ public class NSideMenuOptions: ObservableObject{
         }
     }
     
+    /// Menu side.
     @Published public var side: NSideMenuSide;
     
+    /// Menu content container width.
     @Published public var width: CGFloat;
     
+    /// Presentation Style.
     @Published public var style: NSideMenuStyle{
         didSet{
             if(style == .slideAbove && show){
@@ -68,22 +74,32 @@ public class NSideMenuOptions: ObservableObject{
         }
     }
     
+    /// Main view content Skeleton Stack visiblity.
     @Published public var showSkeletonStack: Bool;
     
+    /// Main view content Skeleton Stack color.
     @Published public var skeletonStackColor: Color;
     
+    /// When style is scale or rotate and the Menu is visible this property will be applied on the Main view container corners.
     @Published public var cornerRaduisIfNeeded: CGFloat;
     
-    @Published public var rotaionDegree: Double;
+    /// When style is rotate and Menu is visible this property will be applied on the Main view container rotation degree.
+    @Published public var rotationDegreeIfNeeded: Double;
     
-    //TODO
+    /// Fired when 'show' property asigned to false or when calling toggleMenu Method.
     public var onWillClose: () -> () = { }
+    
+    /// Fired when 'show' property asigned to true or when calling toggleMenu Method.
     public var onWillOpen: () -> () = { }
+    
+    /// Fired when the side menu close animation did finish.
     public var onDidClose: () -> () = { }
+    
+    /// Fired when the side menu open animation did finish.
     public var onDidOpen: () -> () = { }
     
     //TODO
-    @Published public var enabled: Bool;
+    //@Published public var enabled: Bool;
     
     public init(
         style: NSideMenuStyle = .normal,
@@ -92,9 +108,9 @@ public class NSideMenuOptions: ObservableObject{
         showSkeletonStack: Bool = false,
         skeletonStackColor: Color = Color(UIColor.systemBackground),
         cornerRaduisIfNeeded: CGFloat = 16,
-        rotaionDegree: Double = 6,
+        rotationDegreeIfNeeded: Double = 6,
         show: Bool = false,
-        enabled: Bool = true,
+        //enabled: Bool = true,
         onWillClose: @escaping () -> () = { },
         onWillOpen: @escaping () -> () = { },
         onDidClose: @escaping () -> () = { },
@@ -107,26 +123,29 @@ public class NSideMenuOptions: ObservableObject{
         self.showSkeletonStack = showSkeletonStack
         self.skeletonStackColor = skeletonStackColor
         self.cornerRaduisIfNeeded = cornerRaduisIfNeeded
-        self.rotaionDegree = rotaionDegree
-        self.enabled = enabled
+        self.rotationDegreeIfNeeded = rotationDegreeIfNeeded
+        //self.enabled = enabled
         self.onWillClose = onWillClose
         self.onWillOpen = onWillOpen
         self.onDidClose = onDidClose
         self.onDidOpen = onDidOpen
     }
     
+    /// This method to toggle the side menu visiblity from open to close or from close to open.
     public func toggleMenu(animation: Animation? = .default){
         withAnimation(animation) {
             self.show.toggle()
         }
     }
     
+    /// This method to open the side menu
     public func showMenu(animation: Animation? = .default){
         withAnimation(animation) {
             self.show = true
         }
     }
     
+    /// This method to close the side menu
     public func hideMenu(animation: Animation? = .default){
         withAnimation(animation) {
             self.show = false

@@ -46,6 +46,8 @@ public struct NSideMenuView<V1, V2>: View where V1: View, V2: View {
         return options.side == .leading && !isRTL ? -24 : 24;
     }
     
+    // TODO
+    /*
     @GestureState private var dragOffset = CGSize.zero
     enum PanDirection{
         case left
@@ -53,6 +55,8 @@ public struct NSideMenuView<V1, V2>: View where V1: View, V2: View {
         case none
     }
     private var currentPanDirection:PanDirection = .none
+    */
+    
     public var body: some View {
         let (menu, main) = self.content().value
         return ZStack{
@@ -94,7 +98,7 @@ public struct NSideMenuView<V1, V2>: View where V1: View, V2: View {
                 getMainScale()
             )
             .offset(x: options.show && options.style != NSideMenuStyle.slideAbove ? getShowMenuOffset() : 0)
-            .rotationEffect(.init(degrees: options.show && options.style == .rotate ? (options.side == .leading && !isRTL ? -1 : 1)*options.rotaionDegree : 0))
+            .rotationEffect(.init(degrees: options.show && options.style == .rotate ? (options.side == .leading && !isRTL ? -1 : 1)*options.rotationDegreeIfNeeded : 0))
             .zIndex((options.menuZIndex == 1) ? 0 : 1)
         }
         .ignoresSafeArea()

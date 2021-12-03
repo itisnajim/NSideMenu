@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'NSideMenu'
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.summary          = 'A simple customizable side menu written in SwiftUI.'
     s.homepage         = 'https://github.com/itisnajim/NSideMenu'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }

@@ -1,3 +1,3 @@
 # NSideMenu
 
-A description of this package.
+A simple customizable side menu written in SwiftUI.

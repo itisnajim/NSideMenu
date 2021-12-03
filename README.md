@@ -3,7 +3,7 @@
 ## Description
 A simple customizable side menu written in SwiftUI.
 
-[![Platform](https://img.shields.io/badge/Platform-iOS-brightgreen)](https://github.com/itisnajim/NSideMenuA)
+[![Platform](https://img.shields.io/badge/Platform-iOS-brightgreen)](https://github.com/itisnajim/NSideMenu)
 [![SwiftPM](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen)](https://swift.org/package-manager)
 [![CocoaPods](https://img.shields.io/cocoapods/v/NSideMenu.svg)](https://cocoapods.org/pods/NSideMenu)
 [![License](https://img.shields.io/github/license/itisnajim/NSideMenu)](https://raw.githubusercontent.com/itisnajim/NSideMenu/master/LICENSE)

@@ -92,7 +92,9 @@ public struct NSideMenuView<V1, V2>: View where V1: View, V2: View {
                         .padding(.vertical, 64)
                 }
                 main
-                    .cornerRadius(options.show && (options.style == .scale || options.style == .rotate) ? options.cornerRaduisIfNeeded : 0)
+                    .if((options.show && (options.style == .scale || options.style == .rotate)), transform: { view in
+                        view.cornerRadius(options.cornerRaduisIfNeeded)
+                    })
             }
             .scaleEffect(
                 getMainScale()

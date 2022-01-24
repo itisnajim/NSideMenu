@@ -7,7 +7,7 @@ let package = Package(
     name: "NSideMenu",
     platforms: [
             // Add support for the platforms starting from a specific version.
-            .iOS(.v14)
+            .iOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.

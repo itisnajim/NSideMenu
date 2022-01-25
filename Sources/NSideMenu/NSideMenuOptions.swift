@@ -20,6 +20,7 @@ public enum NSideMenuSide: String{
         return self == .leading ? Alignment.leading : Alignment.trailing
     }
     
+    @available(iOS 14, *)
     public func getToolbarItemPlacement() -> ToolbarItemPlacement{
         return self == .leading ? ToolbarItemPlacement.navigationBarLeading : ToolbarItemPlacement.navigationBarTrailing
     }

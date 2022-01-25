@@ -23,4 +23,12 @@ extension View {
             self
         }
     }
+    
+    @ViewBuilder func disregardSafeArea() -> some View {
+        if #available(iOS 14, *) {
+            self.ignoresSafeArea()
+        } else {
+            self.edgesIgnoringSafeArea(.all)
+        }
+    }
 }

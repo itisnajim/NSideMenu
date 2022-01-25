@@ -103,7 +103,7 @@ public struct NSideMenuView<V1, V2>: View where V1: View, V2: View {
             .rotationEffect(.init(degrees: options.show && options.style == .rotate ? (options.side == .leading && !isRTL ? -1 : 1)*options.rotationDegreeIfNeeded : 0))
             .zIndex((options.menuZIndex == 1) ? 0 : 1)
         }
-        .edgesIgnoringSafeArea(.all)
+        .disregardSafeArea()
         .frame(maxWidth: .infinity)
     }
 }
